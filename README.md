@@ -1,6 +1,6 @@
-# Docker Containers to run ELK with ElastAlert
+# Docker Containers to run nginx proxy
 
-This will setup ELK cluster and ElastAlert
+This will setup nginx cluster
 
 ## Features
 
