@@ -1,0 +1,5 @@
+FROM golang:1.7.3
+ADD /home/atul/godockerizeapi/ . 
+WORKDIR /goapi-elasticsearch
+RUN go get gopkg.in/olivere/elastic.v7 &&/ go get github.com/gorilla/mux 
+CMD [ "gopost.go" ]

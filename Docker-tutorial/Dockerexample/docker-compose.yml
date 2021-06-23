@@ -1,0 +1,22 @@
+version: "3"
+services:
+
+     elasticsearch:
+             build: ./
+             ports:
+               - 8081:80
+             volumes: 
+               - type=bind source=/home/ubuntu/Dockerexample/folder target=/usr/share/nginx/html    
+
+             networks:
+                  - my-network 
+                   
+ 
+networks:
+        my-network:
+               driver:
+                      bridge  
+
+
+           
+

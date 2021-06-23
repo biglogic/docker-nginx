@@ -1,0 +1,40 @@
+version: '3'
+services:
+        web:    
+           image: elasticsearch:7.8.0
+           container_name: elasticsearch
+           ports:
+                   - 9300:9300
+           environment:
+                   - "discovery.type=single-node"
+                   -  "INDEX_NAME= jenkins"
+                   - "MAX_INDEX_SIZE=1GB"
+                   - "MIN_INDEX_AGE=30d"
+
+  
+           networks:    
+                   -  my-network
+        kibana:
+           image: kibana:7.8.0
+           container_name: kibana
+           ports:
+               - 5601:5601
+           environment:
+                   - "ELASTICSEARCH_HOSTS=http://elasticsearch:9200"
+                   -  "DASHBOARD_FOLDER=/tmp/dashboards"  
+           depends_on: 
+                   - web
+           networks:
+                 - my-network               
+
+                  
+networks:
+        my-network:
+                driver: 
+                    bridge
+
+
+volumes:
+  myapp:
+    external: true
+                    
